@@ -10,35 +10,31 @@ namespace Task1
     {
         protected int YCenter;
         protected int XCenter;
-        double radius;
-        public Circle(int _xCenter, int _yCenter, double _radius)
+        private double _radius;
+        public Circle(int xCenter, int yCenter, double radius)
         {
-            XCenter = _xCenter;
-            YCenter = _yCenter;
-            Radius = _radius;
+            XCenter = xCenter;
+            YCenter = yCenter;
+            Radius = radius;
         }
         public double Radius
         {
             get
             {
-                if (radius <= 0)
-                {
-                    throw new Exception("Радиус должен быть>0");
-                }
-                return radius;
+                return _radius;
             }
             set
             {
-                radius = value;
+                if (value <= 0)
+                {
+                    throw new Exception("Радиус должен быть>0");
+                }
+                _radius = value;
             }
         }
         public override void Draw()
         {
-            Console.WriteLine(this.ToString());
-        }
-        public override string ToString()
-        {
-            return string.Format($"Это Окружность с координатой X={XCenter},координатой Y={YCenter}, радиусом={Radius}");
+            Console.WriteLine($"Это Окружность с координатой X={XCenter},координатой Y={YCenter}, радиусом={Radius}");
         }
     }
 }

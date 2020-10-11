@@ -8,47 +8,42 @@ namespace Task2
 {
     public class Round
     {
-        private int YCenter;
-        private int XCenter;
-        private double roundLength;
-        private double area;
-        private double radius;
+        public int XCenter;
+        public int YCenter;       
+        private double _radius;
         public Round(int xCenter, int yCenter, double R)
         {
             XCenter = xCenter;
             YCenter = yCenter;
             Radius = R;
         }
-        private double Radius
+        public double Radius
         {
             get
+            {              
+                return _radius;
+            }
+            private set
             {
-                if (radius <= 0)
+                if (value <= 0)
                 {
                     throw new Exception("Радиус должен быть>0");
                 }
-                return radius;
-            }
-            set
-            { 
-               
-                radius = value;
+                _radius = value;
             }
         }
         public double Length
         {           
             get
             {
-                roundLength = 2 * Math.PI * Radius;
-                return roundLength;
+                return 2 * Math.PI * Radius;            
             }      
         }
        public double Area
         {
             get
             {
-                area = Math.PI * Math.Pow(Radius, 2);              
-                return area;
+                return Math.PI * Math.Pow(Radius, 2);                            
             }
         } 
     }

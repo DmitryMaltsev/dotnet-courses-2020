@@ -10,27 +10,23 @@ namespace Task1
 
         static void Main(string[] args)
         {
-            string Surnames;
-            string Name;
-            string MiddleName;
-            int WorkExperience;
-            string Position;
-            int MinWorkingAge;
-            int MaxWorkingAge;
+            string surnames;
+            string name;
+            string middleName;
+            DateTime startWorking;
+            DateTime myBirthday;
+            string position;
             try
             {
-                Surnames = "Мальцев";
-                Name = "Дмитрий";
-                MiddleName = "Сергеевич";
-                DateTime MyBirthday = new DateTime(1991, 6, 11);
-                WorkExperience = 10;
-                MinWorkingAge = 18;
-                MaxWorkingAge = 70;
-                Position = "Начальник начальников";                             
-                //User Me = new User(Surnames, Name, MiddleName, MyBirthday);                              
-                Emploee emploee = new Emploee(Surnames, Name, MiddleName,
-                            MyBirthday,Position, WorkExperience, MinWorkingAge, MaxWorkingAge);
-                PrintDates(Surnames, Name, MiddleName, MyBirthday, emploee.Age, emploee.Position, emploee.WorkExperience);               
+                surnames = "Мальцев";
+                name = "Дмитрий";
+                middleName = "Сергеевич";
+                myBirthday= new DateTime(1991, 6, 11);
+                startWorking = new DateTime(1990, 6, 11);
+                position = "Начальник начальников";                                                                 
+                Emploee emploee = new Emploee(surnames, name, middleName, 
+                    myBirthday,position,startWorking);
+                PrintEmploeeDates(emploee);               
             }
             catch (Exception ex)
             {
@@ -38,14 +34,14 @@ namespace Task1
             }
 
         }
-        private static void PrintDates(string surName, string name, string middleName, DateTime birthDay, int age,string position, int workExperience)
+
+        private static void PrintEmploeeDates(Emploee user)
         {
-            Console.WriteLine($"ФИО гражданина={surName} {name} {middleName}");
-            Console.WriteLine($"День рождения={birthDay.ToString("dd MM yyyy")}");
-            Console.WriteLine($"Возраст={age}");
-            Console.WriteLine($"Должность={position}");
-            Console.WriteLine($"Опыт работы={workExperience}");
+            Console.WriteLine($"ФИО гражданина={user.Surnames} {user.Name} {user.Middlename}");
+            Console.WriteLine($"День рождения={user.Birthday.ToString("dd MM yyyy")}");
+            Console.WriteLine($"Количество лет={user.Age}");
+            Console.WriteLine($"дата начала работы={user.StartWorking.ToString("dd MM yyyy")}");
+            Console.WriteLine($"Стаж работы={user.WorkExperience}");
         }
-      
-    }
+    }  
 }

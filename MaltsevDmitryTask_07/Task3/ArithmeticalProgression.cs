@@ -8,35 +8,36 @@ namespace Task3
 {
     public class ArithmeticalProgression: ISeries,IIndexable
     {
-        double start, step;
-        int currentIndex;
+        private double _start;
+        private double _step;
+        private double _currentIndex;
 
-        public ArithmeticalProgression(double _start, double _step)
+        public ArithmeticalProgression(double start, double step)
         {
-            start = _start;
-            step = _step;
-            currentIndex = 1;
+            _start = start;
+            _step = step;
+            _currentIndex = 1;
         }
         public double this[int index]
         {
             get
             {
-               return start + step * index;
+               return _start + _step * index;
             }
         }
 
         public double GetCurrent()
         {
-            return start + step * currentIndex;
+            return _start + _step * _currentIndex;
         }
         public bool MoveNext()
         {
-            currentIndex++;
+            _currentIndex++;
             return true;
         }
         public void Reset()
         {
-            currentIndex = 1;
+            _currentIndex = 1;
         }
     }
 }

@@ -17,7 +17,6 @@ namespace Task2
         static void PrintSeries(ISeries series)
         {
             series.Reset();
-
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(series.GetCurrent());
@@ -25,12 +24,4 @@ namespace Task2
             }
         }
     }
-
-    public interface ISeries
-    {
-        double GetCurrent();
-        bool MoveNext();
-        void Reset();
-    }
-   
 }

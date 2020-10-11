@@ -8,9 +8,9 @@ namespace Task3
 {
     class Triangle
     {
-        private double A;
-        private double B;
-        private double C;
+        private double _a;
+        private double _b;
+        private double _c;
              
         public Triangle(double a, double b, double c)
         {
@@ -22,56 +22,49 @@ namespace Task3
         {
             get
             {
-                if (A < 0)
-                    throw new Exception("Длина стороны А должна быть >0");
-                return A;
+                return _a;
             }
-            set
+            private set
             {
-               
-                A = value;
+                if (value < 0)
+                    throw new Exception("Длина стороны А должна быть >0");
+                _a = value;
             }
         }
         public double BLength
         {
             get
             {
-                if (B < 0)
-                    throw new Exception("Длина стороны B должна быть >0");
-                return B;
+                return _b;
             }
-            set
+            private set
             {
-               
-                B = value;
+                if (value < 0)
+                    throw new Exception("Длина стороны B должна быть >0");
+                _b = value;
             }
         }
         public double CLength
         {
             get
-            {
-                if (C < 0)
-                    throw new Exception("Длина стороны C должна быть >0");
-                return C;
+            {             
+                return _c;
             }
             set
             {
-               
-                C = value;
+                if (value < 0)
+                    throw new Exception("Длина стороны C должна быть >0");
+                _c = value;
             }
         }
-
         public double Area
         {
             get
             {
-                CompaisonTriangleSides();
+               CompaisonTriangleSides();
                double p = (ALength + BLength + CLength) / 2;
                double area = Math.Sqrt(p * (p - ALength) * (p - BLength) * (p - CLength));
                return area;
-            }
-            set
-            {            
             }
         }
          public double Perimeter
@@ -79,11 +72,8 @@ namespace Task3
             get
             {
                 CompaisonTriangleSides();
-                double P = ALength + BLength + CLength;
-                return P;
-            }
-            set
-            {              
+                double p = ALength + BLength + CLength;
+                return p;
             }
         }
 

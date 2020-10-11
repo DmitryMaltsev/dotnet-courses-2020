@@ -6,37 +6,32 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    abstract class Bonuses : Screen
+    abstract class Bonuses
     {
-        public Bonuses(int _widthScreen, int _heightScreen)
-             : base(_widthScreen, _heightScreen)
-        { }
-        public abstract int CountBonus { get; set; }      
+       public abstract int XPosition { get; set; }
+       public abstract int YPosition { get; set; }
+       public abstract double Bonus { get; set; }      
     }
-    class MashRooms : Bonuses,IBaseInformation
+    class MashRooms : Bonuses, IBonusEvent
     {
-        public MashRooms(double _xPosition, double _yPosition, int _widthScreen, int _heightScreen,int _countBonus)
-             : base(_widthScreen, _heightScreen)
+        public MashRooms(int xPosition, int yPosition, double bonus)
         {
-            CountBonus = CountBonus;
-            XAxisposition = _xPosition;
-            YAxisposition = _yPosition;
+            XPosition = xPosition;
+            YPosition = yPosition;
+            Bonus = bonus;
         }
-        public double XAxisposition { get; set; }
-        public double YAxisposition { get; set; }
-        public override int CountBonus { get; set; }
-    }
-    class Berries : Bonuses, IBaseInformation
-    {
-        public Berries(double _xPosition, double _yPosition, int _widthScreen, int _heightScreen, int _countBonus)
-             : base(_widthScreen, _heightScreen)
+        public override int XPosition { get; set; }
+        public override int YPosition { get; set; }
+        public override double Bonus { get; set; }
+
+        public bool AddBonusPoints(double countPlayerBonuses, double maxBonusPoints)
         {
-            CountBonus = CountBonus;
-            XAxisposition = _xPosition;
-            YAxisposition = _yPosition;
+            bool createRandombonus = false;
+            if (countPlayerBonuses <= maxBonusPoints)
+            {
+                createRandombonus = true;
+            }
+            return createRandombonus;
         }
-        public double XAxisposition { get; set; }
-        public double YAxisposition { get; set; }
-        public override int CountBonus { get; set; }
     }
 }

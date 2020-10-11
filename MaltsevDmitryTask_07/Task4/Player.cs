@@ -6,39 +6,52 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    class Player:Screen,IBaseInformation
+    class Player:IEnemyEvent,IBonusEvent
     {
-
-        public Player(int _positionX, int _poSitionY, int _health,double _speed,int Height, int Width)
-            :base(Height,Width)
+        public Player(int positionX, int poSitionY, int health, double speed, double damage, double attackSpeed)
         {
-            XAxisposition = _positionX;
-            YAxisposition = _poSitionY;
-            Speed = _speed;
-            Health = _health;
+            XAxisposition = positionX;
+            YAxisposition = poSitionY;
+            Speed = speed;
+            Health = health;
+            Damage = damage;
+            Health = health;
+            AttackSpeed = attackSpeed;
         }
         public  double XAxisposition { get; set; }   
         public double YAxisposition { get; set; }
         public double Speed{ get; set; }
         public double Health { get; set; }
-        public double Bonus { get; set; }
-        public  void Changeposition() { }
-        public double CountHealth() {
-            return Health;
-        }
-        public double CountBonus()
+        public double Damage { get; set; }
+        public double AttackSpeed { get; set; }
+        public double Bonus { get; set; }       
+
+        private void ChangePosition() { }
+ 
+        public double DamageToUnit(double enemyDamage)
         {
-            return Bonus;
+            return Health - enemyDamage;
         }
-        public bool IsPlayerDead()
+
+        public bool IsDead()
         {
-         bool isDead=false;
-         return isDead;
+            bool gameOver = false; 
+            if (Health <= 0)
+            {
+                gameOver = true;
+            }
+            return gameOver;
         }
-        public bool IsPlayerWin()
+
+        public bool AddBonusPoints(double countBonusPoints, double maxBonusPoints)
         {
-            bool Win = false;
-            return Win;
+            bool winGame = false;
+            Bonus += countBonusPoints;
+            if(Bonus >= maxBonusPoints)
+            {
+                winGame = true;
+            }
+            return winGame;
         }
     }
 }

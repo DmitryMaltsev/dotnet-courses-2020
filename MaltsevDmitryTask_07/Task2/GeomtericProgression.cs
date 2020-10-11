@@ -8,32 +8,34 @@ namespace Task2
 {
     public class GeometricProgerssion : ISeries
     {
-        double start, step;
-        int currentIndex;
-        public GeometricProgerssion(double _start, double _step)
+        private double _start;
+        private double _step;
+        private double _currentIndex;
+        public GeometricProgerssion(double start, double step)
         {
-            start = _start;
-            step = _step;
-            currentIndex = 1;
+            _start = start;
+            _step = step;
+            _currentIndex = 1;
         }
 
         public double GetCurrent()
         {
             double result = 1;
-            for (int i = 0; i < currentIndex; i++)
+            for (int i = 0; i < _currentIndex; i++)
             {
-                result *= step;
+                result *= _step;
             }
             return result;
+
         }
         public bool MoveNext()
         {
-            currentIndex++;
+            _currentIndex++;
             return true;
         }
         public void Reset()
         {
-            currentIndex = 1;
+            _currentIndex = 1;
         }
     }
 }

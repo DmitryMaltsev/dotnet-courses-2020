@@ -35,14 +35,4 @@ namespace Task3
             Console.WriteLine(indexable[index].ToString());
         }
     }
-    public interface ISeries
-    {
-        double GetCurrent();
-        bool MoveNext();
-        void Reset();
-    }
-    public interface IIndexable
-    {
-        double this[int index] { get; }
-    }
 }

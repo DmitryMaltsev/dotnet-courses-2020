@@ -8,36 +8,33 @@ namespace Task1
 {
     class Ring : Circle
     {
-        protected int outerRadius;
-        public Ring(int _xCenter, int _yCenter, int _radius, int _outerRadius)
-            : base(_xCenter, _yCenter, _radius)
+        private double _outerRadius;
+        public Ring(int xCenter, int yCenter, double radius, double outerRadius)
+            : base(xCenter, yCenter, radius)
         {
-            OuterRadius = _outerRadius;
+            OuterRadius = outerRadius;
         }
-        public int OuterRadius
+        public double OuterRadius
         {
             get
             {
-                if (outerRadius <= 0)
-                {
-                    throw new Exception("Внешний радиус должен быть больше 0");
-                }
-                return outerRadius;
+               
+                return _outerRadius;
             }
             set
             {
-                outerRadius = value;
+                if (value <= 0)
+                {
+                    throw new Exception("Внешний радиус должен быть больше 0");
+                }
+                _outerRadius = value;
             }
         }
 
         public override void Draw()
         {
-            Console.WriteLine(this.ToString());
-        }
-        public override string ToString()
-        {
-            return string.Format($"Это кольцо с координатой X={XCenter},координатой Y={YCenter},внутренним радиусом радиусом={Radius}"
-                +$", внешним радиусом={OuterRadius}");
+            Console.WriteLine($"Это кольцо с координатой X={XCenter},координатой Y={YCenter},внутренним радиусом радиусом={Radius}"
+                + $", внешним радиусом={OuterRadius}");
         }
     }
 }

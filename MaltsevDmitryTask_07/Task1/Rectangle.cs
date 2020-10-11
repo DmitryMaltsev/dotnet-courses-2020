@@ -8,50 +8,46 @@ namespace Task1
 {
     class Rectangle : Figure
     {
-        protected int width;
-        protected int height;
-        public Rectangle(int _width, int _height)
+        private int _width;
+        private int _height;
+        public Rectangle(int width, int height)
         {
-            Width = _width;
+            Width = width;
+            Height = height;
         }
         public int Width
         {
             get
             {
-                if (width <= 0)
-                {
-                    throw new Exception("Ширина прямоугольника должна быть >0");
-                }
-                return width;
+                return _width;
             }
             set
             {
-                width = value;
+                if (value <= 0)
+                {
+                    throw new Exception("Ширина прямоугольника должна быть >0");
+                }
+                _width = value;
             }
         }
         public int Height
         {
             get
             {
-                if (height < 0)
-                {
-                    throw new Exception("Высота прямоугольника должна быть >0");
-                }
-                return height;
+                return _height;
             }
             set
             {
-                height = value;
+                if (value < 0)
+                {
+                    throw new Exception("Высота прямоугольника должна быть >0");
+                }
+                _height = value;
             }
         }
         public override void Draw()
         {
-            Console.WriteLine(this.ToString());
-        }
-        public override string ToString()
-        {
-            return string.Format($"Это прямоугольник с шириной={Width}, высотой={Height}");
+            Console.WriteLine($"Это прямоугольник с шириной={Width}, высотой={Height}");
         }
     }
-
 }

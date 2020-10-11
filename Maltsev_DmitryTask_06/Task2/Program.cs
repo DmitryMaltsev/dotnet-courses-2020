@@ -10,33 +10,33 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            int X;
-            int Y;
-            double Radius;
-            double OuterRadius;
+            int x;
+            int y;
+            double radius;
+            double outerRadius;
             try
             {
-                X = 1;
-                Y = 1;
-                Radius = 5;
-                OuterRadius = 8;                             
-                Ring ring = new Ring(X, Y, Radius, OuterRadius);
-                PrintDates(X, Y, Radius, OuterRadius, ring.RingArea, ring.RingLength);
+                x = 1;
+                y = 1;
+                radius = 5;
+                outerRadius = 6;                             
+                Ring ring = new Ring(x, y, radius, outerRadius);
+                PrintDates(ring);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-        private static void PrintDates(int xCenter, int yCenter, double radius, double outerRadius, Double ringArea,Double ringLength)
-        {
-            Console.WriteLine("Координата X центра=" + xCenter);
-            Console.WriteLine("Координата Y центра=" + yCenter);
-            Console.WriteLine("Внешний радиус=" + radius);
-            Console.WriteLine("Внутренний радиус=" + outerRadius);
-            Console.WriteLine("Длина кольца={0,3:f2}", ringLength);
-            Console.WriteLine("Площадь кольца={0,3:f2}", ringArea);
 
+        private static void PrintDates(Ring ring)
+        {
+            Console.WriteLine("Координата X центра=" + ring.XCenter);
+            Console.WriteLine("Координата Y центра=" + ring.YCenter);
+            Console.WriteLine("Внешний радиус=" + ring.Radius);
+            Console.WriteLine("Внутренний радиус=" +ring.OuterRadius);
+            Console.WriteLine("Длина кольца={0,3:f2}", ring.Length);
+            Console.WriteLine("Площадь кольца={0,3:f2}", ring.Area);
         }
     }  
 }

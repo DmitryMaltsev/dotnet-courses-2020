@@ -10,16 +10,16 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            int X;
-            int Y;
-            double Radius;
+            int x;
+            int y;
+            double radius;
             try
             {
-                X = 1;
-                Y = 1;
-                Radius = -1;   
-                Round round = new Round(X, Y, Radius);
-                PrintDates(X, Y, Radius, round.Area, round.Length);
+                x = 1;
+                y = 1;
+                radius = -1;   
+                Round round = new Round(x, y, radius);
+                PrintRoundDates(round);
             }
 
             catch(Exception ex)
@@ -28,13 +28,13 @@ namespace Task2
             }
         }
 
-        private static void PrintDates(int xCenter, int yCenter,double radius, double roundLength, Double area)
+        private static void PrintRoundDates(Round round)
         {
-            Console.WriteLine("Координата X центра=" + xCenter);
-            Console.WriteLine("Координата Y центра=" + yCenter);
-            Console.WriteLine("Радиус=" + radius);
-            Console.WriteLine("Длина круга={0,3:f2}", roundLength);
-            Console.WriteLine("Площадь круга={0,3:f2}", area);
+            Console.WriteLine("Координата X центра=" + round.XCenter);
+            Console.WriteLine("Координата Y центра=" + round.YCenter);
+            Console.WriteLine("Радиус=" + round.Radius);
+            Console.WriteLine("Длина круга={0,3:f2}", round.Length);
+            Console.WriteLine("Площадь круга={0,3:f2}", round.Area);
         }
     }
 }

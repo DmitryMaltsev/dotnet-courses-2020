@@ -8,50 +8,49 @@ namespace Maltsev_DmitryTask_05
 {
     public class User
     {
-        private string Surnames;
-        private string Name;
-        private string MiddleName;
-        private DateTime Birthday;
-        private int age;
+        private DateTime _birthday;
         public User(string surnames, string name, string middleName, DateTime birthDay)
         {
             Surnames = surnames;
             Name = name;
-            MiddleName = middleName;
+            Middlename = middleName;
             Birthday = birthDay;
         }
-        public int Age
+        public string Name { get; private set; }
+        public string Surnames { get; private set; }
+        public string Middlename { get; private set; }
+        public DateTime Birthday
         {
             get
             {
-             return age = CalculateAge();              
-            }      
-        }
-        private int CalculateAge()
-        {
-            if (Birthday > DateTime.Now)
-            {
-                throw new Exception("Дата рождения больше текущей даты. Введите верную дату");
+                return _birthday;
             }
-            int ageFromBirth=0;
-            DateTime now = DateTime.Now;      
-        if (now.Month > Birthday.Month)
-        {
-           ageFromBirth = now.Year - Birthday.Year;
+            private set
+            {
+                DateTime now = DateTime.Now;
+                if (value > now)
+                {
+                    throw new Exception("Дата рождения больше текущей даты. Введите верную дату");
+                }
+                else
+                    _birthday = value;
+            }
         }
-        else
-         if (now.Month == Birthday.Month)
-         {
-            if (now.Day >= Birthday.Day)
-           {
-             ageFromBirth = now.Year - Birthday.Year;
-           }
-         }
-          else 
-          {
-            ageFromBirth = now.Year - 1 - Birthday.Year;
-          }                   
+
+        public int CalculateAge()
+        {       
+            int ageFromBirth = 0;
+            DateTime now = DateTime.Now;
+            if (now.Month > Birthday.Month || (now.Month == Birthday.Month && now.Day >= Birthday.Day))
+            {
+                ageFromBirth = now.Year - Birthday.Year;
+            }            
+            else
+            {
+                ageFromBirth = now.Year - 1 - Birthday.Year;
+            }
             return ageFromBirth;
         }
-    }
-}
+    }     
+} 
+

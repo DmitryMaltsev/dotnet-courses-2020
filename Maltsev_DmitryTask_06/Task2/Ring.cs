@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
-    public class Ring:Round
+    public class Ring : Round
     {
-        private double outerRadius;
-       public Ring(int xCenter, int yCenter, double R,double OuterR)
-            :base(xCenter,yCenter,R)
+        private double _outerRadius;
+        public Ring(int xCenter, int yCenter, double R, double OuterR)
+             : base(xCenter, yCenter, R)
         {
             OuterRadius = OuterR;
         }
@@ -18,35 +18,35 @@ namespace Task2
         {
             get
             {
-                if (outerRadius <= 0)
+                return _outerRadius;
+            }
+            private set
+            {
+                if (value <= 0)
                 {
                     throw new Exception("Внешний радиус должен быть>0");
                 }
-                if (outerRadius <= Radius)
+                if (value <= Radius)
                 {
                     throw new Exception("Внешний радиус должен быть больше внутреннего");
                 }
-                return outerRadius;
+                _outerRadius = value;
             }
-            set
-            {
-                outerRadius = value;                     
-            }         
         }
-        public  double RingArea
-        {
-            get
-            {             
-             return Math.PI * Math.Pow(OuterRadius, 2)-Area;
-            }    
-        }
-        public double RingLength
+        public override double Area
         {
             get
             {
-              return Length + 2 * Math.PI*OuterRadius;
+                return Math.PI*(Math.Pow(OuterRadius, 2) - Math.Pow(Radius, 2));
             }
-        }     
-
+        }
+        public override double Length
+        {
+            get
+            {
+                return  2 * Math.PI * (OuterRadius+Radius);
+            }
+        }
     }
-    }
+}
+    

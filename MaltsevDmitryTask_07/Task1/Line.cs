@@ -8,34 +8,30 @@ namespace Task1
 {  
    class Line : Figure
    {
-     protected int width;
-     public Line(int _width)
+     private int _width;
+     public Line(int width)
      {
-            Width = _width;
+            Width = width;
      }
      public int Width
-     {
-       get
-       {
-          if (width <= 0)
-          {
-              throw new Exception("Длина прямой должна быть >0");
-          }
-          return width;
-       }
-       set
-       {
-           width = value;
-       }
-     }
+        {
+            get
+            {
+                return _width;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Длина прямой должна быть >0");
+                }
+                _width = value;
+            }
+        }
 
-      public override void Draw()
-      {
-            Console.WriteLine(this.ToString());
-      }
-      public override string ToString()
-      {
-            return string.Format($"Это прямая длиной {Width}");
-      }
-   }   
+        public override void Draw()
+        {
+            Console.WriteLine( $"Это прямая длиной {Width}" );
+        }
+    }   
 }

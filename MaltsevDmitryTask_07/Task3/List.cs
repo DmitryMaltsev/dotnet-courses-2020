@@ -8,32 +8,32 @@ namespace Task3
 {
     class List:ISeries,IIndexable
     {
-        private double[] series;
-        private int currentIndex;
-        public List(double[] _series)
+        private double[] _series;
+        private int _currentIndex;
+        public List(double[] series)
         {
-            series = _series;
-            currentIndex = 0;
+            _series = series;
+            _currentIndex = 0;
         }
         public double this[int index]
         {
             get
             {
-                return series[index];
+                return _series[index];
             }
         }           
         public double GetCurrent()
         {
-            return series[currentIndex];
+            return _series[_currentIndex];
         }
         public bool MoveNext()
         {
-            currentIndex = currentIndex < series.Length - 1 ? currentIndex + 1 : 0;
+            _currentIndex = _currentIndex < _series.Length - 1 ? _currentIndex + 1 : 0;
             return true;
         }
         public void Reset()
         {
-            currentIndex = 0;
+            _currentIndex = 0;
         } 
     }
 }

@@ -13,10 +13,5 @@ namespace Task4
             Screen screen = new Screen(800, 400);
         }
     }
-    public interface IBaseInformation
-    {
-       double XAxisposition { get; set; }
-       double YAxisposition { get; set; }
-    }
-   
 }
+

@@ -8,41 +8,47 @@ namespace Task4
 {
     public class MyString
     {
-        public char[] MyWord;
-        public MyString(char[] word)
-        {          
-            MyWord = word;                  
+        private char[] myWord;
+        public MyString(string word)
+        {
+            myWord = word.ToCharArray();                 
         }
-        
-       public static char[] operator +(MyString myString1, MyString myString2)
+                  
+       public static MyString operator +(MyString myString1, MyString myString2)
        {
-            char[] ResultChar = new char[myString1.MyWord.Length + myString2.MyWord.Length];
-            for (int i = 0; i < myString1.MyWord.Length; i++)
+            char[] resultChar = new char[myString1.myWord.Length + myString2.myWord.Length];
+            for (int i = 0; i < myString1.myWord.Length; i++)
             {             
-              ResultChar[i] = myString1.MyWord[i];              
+              resultChar[i] = myString1.myWord[i];              
             }
             int k = 0;
-            for (int i = myString1.MyWord.Length; i < ResultChar.Length; i++)
+            for (int i = myString1.myWord.Length; i < resultChar.Length; i++)
             {                            
-               ResultChar[i] = myString2.MyWord[k];
-                k+=1;             
+               resultChar[i] = myString2.myWord[k];
+               k+=1;             
             }
-            return ResultChar;
+            string resultString = new string(resultChar);
+            MyString myString3 = new MyString(resultString);
+            return myString3;
        }
         
-      public static char[] operator -(MyString myString1, MyString myString2)
+      public static MyString operator -(MyString str1, MyString str2)
       {
-            char[] char1 = myString1.MyWord; char[] char2 = myString2.MyWord;
+            MyString str3;
+            string resultString;
+            char[] char1 = str1.myWord;
+            char[] char2 = str2.myWord;
             int n = char1.Length - char2.Length;
-            char[] ResultChar;            
+            char[] resultChar;            
             int j=0; int i = 0; bool found = false;
             int[] index =new int[char2.Length];
-            while ((i <= n) && !found)
+            while (i <= n && !found)
             {
                 j = Array.IndexOf(char1, char2[0], i);
                 if(j==-1)
                 {
-                    return char1;
+                    resultString = new string(char1);
+                    return str3=new MyString(resultString);
                 }
                 if((j<=n))
                 {
@@ -59,9 +65,9 @@ namespace Task4
             }         
             if(found)
             {
-                ResultChar = new char[char1.Length - char2.Length]; 
+                resultChar = new char[char1.Length - char2.Length]; 
                 int k = 0; int m = 0;int ind = 0;
-                while( m<ResultChar.Length)
+                while( m<resultChar.Length)
                 {                
                        if ((k<index.Length) && (ind == index[k]))
                         {
@@ -70,16 +76,19 @@ namespace Task4
                         }                  
                     else
                     {
-                        ResultChar[m] = char1[ind];
+                        resultChar[m] = char1[ind];
                         m += 1;
                         ind += 1;
                     }
-                }
-                return ResultChar;
+                }             
+                resultString = new string(resultChar);
+                return str3 = new MyString(resultString);
             }
             else
-            return char1;
+                resultString = new string(char1);
+                return str3 = new MyString(resultString);
         }       
+
       public static bool operator ==(MyString myString1, MyString myString2)
       {
             bool isEqual = false;
@@ -92,11 +101,11 @@ namespace Task4
                 return isEqual = false;
             }
 
-            if (myString1.MyWord.Length == myString2.MyWord.Length)
+            if (myString1.myWord.Length == myString2.myWord.Length)
                 {
-                    for (int i = 0; i < myString1.MyWord.Length; i++)
+                    for (int i = 0; i < myString1.myWord.Length; i++)
                     {
-                        if (myString1.MyWord[i] != myString2.MyWord[i])
+                        if (myString1.myWord[i] != myString2.myWord[i])
                         {
                             isEqual = false;
                             break;
@@ -110,11 +119,11 @@ namespace Task4
         public static bool operator !=(MyString myString1, MyString myString2)
       {
             bool IsNotEqual = true;
-            if (myString1.MyWord.Length == myString2.MyWord.Length)
+            if (myString1.myWord.Length == myString2.myWord.Length)
             {
-                for (int i = 0; i < myString1.MyWord.Length; i++)
+                for (int i = 0; i < myString1.myWord.Length; i++)
                 {
-                    if (myString1.MyWord[i] != myString2.MyWord[i])
+                    if (myString1.myWord[i] != myString2.myWord[i])
                     {
                         IsNotEqual = true;
                         break;
@@ -127,13 +136,8 @@ namespace Task4
         }
       public override string ToString()
       {
-            string Result="";
-            for (int i = 0; i < MyWord.Length; i++)
-            {
-                Result += MyWord[i];
-            }
-            return Result;
-      }
-      
+         string result = new string(myWord);
+         return result;
+      }     
     }
 }

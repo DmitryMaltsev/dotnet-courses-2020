@@ -10,16 +10,16 @@ namespace Task3
     {
         static void Main(string[] args)
         {
-            double ALength;
-            double BLength;
-            double CLength;
+            double aLength;
+            double bLength;
+            double cLength;
             try
             {
-                ALength = 15;
-                BLength = -5;
-                CLength = 5;                                   
-                Triangle triangle = new Triangle(ALength, BLength, CLength);
-                PrintTriangleData(ALength, BLength, CLength, triangle.Area, triangle.Perimeter);
+                aLength = 5;
+                bLength = 5;
+                cLength = 5;                                   
+                Triangle triangle = new Triangle(aLength, bLength, cLength);
+                PrintTriangleDates(triangle);
             }
             catch (Exception ex)
             {
@@ -27,15 +27,13 @@ namespace Task3
             }
         }
 
-      
-
-        private static void PrintTriangleData(double aLength, double bLength, double cLength,double area,double perimeter)
+        private static void PrintTriangleDates(Triangle triangle)
         {
-            Console.WriteLine($"Сторона А={aLength}");
-            Console.WriteLine($"Сторона B={bLength}");
-            Console.WriteLine($"Сторона C={cLength}");
-            Console.WriteLine($"Периметр={perimeter}");
-            Console.WriteLine($"Площадь равна={area,3:f2}");
+            Console.WriteLine($"Сторона А={triangle.ALength}");
+            Console.WriteLine($"Сторона B={triangle.BLength}");
+            Console.WriteLine($"Сторона C={triangle.CLength}");
+            Console.WriteLine($"Периметр={triangle.Perimeter}");
+            Console.WriteLine($"Площадь равна={triangle.Area,3:f2}");
         }
     }
 }

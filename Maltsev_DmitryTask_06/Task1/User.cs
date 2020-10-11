@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,52 +8,56 @@ namespace Task1
 {
     public class User
     {
-        public string Surnames;
-        private string Name;
-        private string MiddleName;
-        private DateTime Birthday;
-        private int age;
+        private DateTime _birthday;
+        private int _age;
         public User(string surnames, string name, string middleName, DateTime birthDay)
         {
             Surnames = surnames;
             Name = name;
-            MiddleName = middleName;
+            Middlename = middleName;
             Birthday = birthDay;
+        }
+        public string Name { get; private set; }
+        public string Surnames { get; private set; }
+        public string Middlename { get; private set; }
+        public DateTime Birthday
+        {
+            get
+            {
+                return _birthday;
+            }
+            private set
+            {
+                DateTime now = DateTime.Now;
+                if (value > now)
+                {
+                    throw new Exception("Дата рождения больше текущей даты. Введите верную дату");
+                }
+                else
+                    _birthday = value;
+            }
         }
         public int Age
         {
             get
             {
-                if (Birthday > DateTime.Now)
-                {
-                    throw new Exception("Дата рождения больше текущей даты. Введите верную дату");
-                }
-                age = CalculateAge();
-                return age;
-            }
+                return CalculateAge(Birthday);                            
+            }         
         }
-
-        public int CalculateAge()
+        public int CalculateAge(DateTime date)
         {
-            int ageFromBirth = 0;
+            int age = 0;
             DateTime now = DateTime.Now;
-            if (now.Month > Birthday.Month)
+            if (now.Month > date.Month || (now.Month == date.Month && now.Day >= date.Day))
             {
-                ageFromBirth = now.Year - Birthday.Year;
-            }
-            else
-             if (now.Month == Birthday.Month)
-            {
-                if (now.Day >= Birthday.Day)
-                {
-                    ageFromBirth = now.Year - Birthday.Year;
-                }
+                age = now.Year - date.Year;
             }
             else
             {
-                ageFromBirth = now.Year - 1 - Birthday.Year;
+                age = now.Year - 1 - date.Year;
             }
-            return ageFromBirth;
+            return age;
         }
     }
 }
+
