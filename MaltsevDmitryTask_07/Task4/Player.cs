@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    class Player:IEnemyEvent,IBonusEvent
+    class Player:Character,IEnemyEvent,IBonusEvent
     {
         public Player(int positionX, int poSitionY, int health, double speed, double damage, double attackSpeed)
         {
@@ -16,17 +16,17 @@ namespace Task4
             Health = health;
             Damage = damage;
             Health = health;
-            AttackSpeed = attackSpeed;
+            Attackspeed = attackSpeed;
         }
         public  double XAxisposition { get; set; }   
         public double YAxisposition { get; set; }
-        public double Speed{ get; set; }
-        public double Health { get; set; }
-        public double Damage { get; set; }
-        public double AttackSpeed { get; set; }
-        public double Bonus { get; set; }       
+        public override double Speed{ get; set; }
+        public override double Health { get; set; }
+        public override double Damage { get; set; }
+        public override double Attackspeed { get; set; }
+        public double Bonus { get; set; }
 
-        private void ChangePosition() { }
+        public override void Move() { } 
  
         public double DamageToUnit(double enemyDamage)
         {

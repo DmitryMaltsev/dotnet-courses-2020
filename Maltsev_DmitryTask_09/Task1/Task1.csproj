@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E47AAD0A-4077-4808-B1CC-A9795A59DBD8}</ProjectGuid>
+    <ProjectGuid>{62B72FBC-99FC-4A12-BB96-5FC83847B693}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Task4</RootNamespace>
-    <AssemblyName>Task4</AssemblyName>
+    <RootNamespace>Task1</RootNamespace>
+    <AssemblyName>Task1</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,17 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bear.cs" />
-    <Compile Include="Character.cs" />
-    <Compile Include="Bonuses.cs" />
-    <Compile Include="IBonusEvent.cs" />
-    <Compile Include="IEnemyEvent.cs" />
-    <Compile Include="Obstacles.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="MyNode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Screen.cs" />
-    <Compile Include="Tree.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
