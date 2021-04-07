@@ -1,0 +1,56 @@
+﻿
+@model Review;
+@{
+    ViewBag.Title = "main13";
+}
+@{
+    Layout = "_Layout";
+}
+
+        <div id="AllContentStyle">
+            <div class="Maindiv"><img src="/TextPictures/Guest13Top.png"></div>
+            <p class="ContentText">
+                Буду очень  рада, если вы оставите свой отзыв,
+                комментарии после знакомства с содержанием страниц сайта.
+                Здесь можно  задать интересующие Вас вопросы.
+            </p>
+            <div class="Maindiv">
+                <b>
+                    Ваши отзывы, вопросы, мнения, комментарии
+                </b>
+            </div>
+            <form asp-action="Main13" asp-controller="Home" method="post">
+                <p>
+                    <label>Имя</label>
+                    <br><br><input type="text" asp-for="Name" />
+                    <br><span asp-validation-for="Name"></span>
+                </p>
+                <p>
+                    <br><label>Комментарий</label>
+                    <br><br>@Html.TextArea("Commentary", null, new { @class = "form-control", rows = "13", cols = "50", resize = "none" })
+                    <br> <span asp-validation-for="Commentary"></span>
+                </p>
+                <input type="hidden" id="Date" name="Date" value=@DateTime.Now asp-for="Date">
+                <p><input type="submit" value="Отправить" /></p>
+            </form>
+            @{
+                int i = 1;
+            }
+            @foreach (var item in ViewBag.Views)
+            {<div style="border-top: 1px solid grey; border-left:0px ">
+                    <div style="font-size:13px; font-style:italic; text-align:right; margin:0 25px"><b>#@i</b></div>
+                    @{
+                        i += 1;
+                    }
+                    <div style="font-size:12px; font-style:italic; margin:0 25px;">@item.Date</div>
+                    <div style="margin:0 25px"><b>@item.Name</b></div>
+                    <div style=" margin: 0 25px;">@item.Commentary</div><br><br>
+                </div>
+            }
+            <div class="Maindiv"><br><img src="/TextPictures/Guest13Bot.jpg"></div><br>
+        </div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

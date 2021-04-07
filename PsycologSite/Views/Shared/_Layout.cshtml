@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/MyStyle.css">
+</head>
+
+<body background="/IndexBG.jpg" scrolling="no">
+    <div class="Maindiv">
+        <img src="/Rainbow.jpg" width="800" height="150">
+    </div>
+    <div id="AllContentMenuStyle">
+        <div id="AllMenuStyle">
+
+            <p class="pMenuRef">
+                <a asp-controller="Home" asp-action="Main1" target="_top">
+                    <img src="/TextPictures/RightArrow.png" height="10" width="20">Добро пожаловать!
+                </a>
+            </p>
+            <p class="pMenuRef">
+                <a asp-controller="Home" asp-action="Main2" target="_top">
+                    <img src="/TextPictures/RightArrow.png" height="10" width="20">Давайте познакомимся
+                </a>
+            </p>
+            <p class="pMenuRef">
+                <a asp-controller="Home" asp-action="Main3" target="_top">
+                    <img src="/TextPictures/RightArrow.png" height="10" width="20">Нормативно-правовая документация
+                </a>
+            </p>
+            <p class="pMenuRef">
+                <a asp-controller="Home" asp-action="Main4" target="_top">
+                    <img src="/TextPictures/RightArrow.png" height="10" width="20"> Диагностический инструментарий педагога-психолога
+                </a>
+            </p>
+            <p class="pMenuRef">
+                <a asp-controller="Home" asp-action="Main5" target="_top">
+                    <img src="/TextPictures/RightArrow.png" height="10" width="20">Методическая копилка
+                </a>
+            </p>
+            <p class="pMenuRef">
+                <a asp-controller="Home" asp-action="Main6" target="_top">
+                    <img src="/TextPictures/RightArrow.png" height="10" width="20">Программно-методическое обеспечение развивающей работы
+                </a>
+            </p>
+            <p class="pMenuRef">
+                <a asp-controller="Home" asp-action="Main7" target="_top">
+                    <img src="/TextPictures/RightArrow.png" height="10" width="20">Страничка педагогам
+                </a>
+            </p>
+            <p class="pMenuRef">
+                <a asp-controller="Home" asp-action="Main8" target="_top">
+                    <img src="/TextPictures/RightArrow.png" height="10" width="20">Для Вас, родители!
+                </a>
+            </p>
+            <p class="pMenuRef">
+                <a asp-controller="Home" asp-action="Main9" target="_top">
+                    <img src="/TextPictures/RightArrow.png" height="10" width="20">Мои презентации
+                </a>
+            </p>
+            <p class="pMenuRef">
+                <a asp-controller="Home" asp-action="Main10" target="_top">
+                    <img src="/TextPictures/RightArrow.png" height="10" width="20">Полезные ссылки для педагогов и родителей
+                </a>
+            </p>
+            <p class="pMenuRef">
+                <a asp-controller="Home" asp-action="Main11" target="_top">
+                    <img src="/TextPictures/RightArrow.png" height="10" width="20">Детская страничка
+                </a>
+            </p>
+            <p class="pMenuRef">
+                <a asp-controller="Home" asp-action="Main12" target="_top">
+                    <img src="/TextPictures/RightArrow.png" height="10" width="20">Фотогалерея
+                </a>
+            </p>
+            <p class="pMenuRef">
+                <a asp-controller="Home" asp-action="Main13" target="_top">
+                    <img src="/TextPictures/RightArrow.png" height="10" width="20">Гостевая книга
+                </a>
+            </p>
+        </div>
+                @RenderBody()
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </div>
+</body>
+</html>
